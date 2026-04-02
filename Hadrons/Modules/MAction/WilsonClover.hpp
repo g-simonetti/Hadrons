@@ -77,8 +77,10 @@ public:
 };
 
 MODULE_REGISTER_TMP(WilsonClover, TWilsonClover<FIMPL>, MAction);
+MODULE_REGISTER_TMP(WilsonCloverAsym, TWilsonClover<SpWilsonTwoIndexAntiSymmetricImplR>, MAction);
 #ifdef GRID_DEFAULT_PRECISION_DOUBLE
 MODULE_REGISTER_TMP(WilsonCloverF, TWilsonClover<FIMPLF>, MAction);
+MODULE_REGISTER_TMP(WilsonCloverAsym, TWilsonClover<SpWilsonTwoIndexAntiSymmetricImplF>, MAction);
 #endif
 
 /******************************************************************************

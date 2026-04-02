@@ -31,4 +31,4 @@ using namespace MSource;
 
 template class HADRONS_NAMESPACE::MSource::TZ2<FIMPL>;
 template class HADRONS_NAMESPACE::MSource::TZ2<ScalarImplCR>;
-
+template class HADRONS_NAMESPACE::MSource::TZ2<SpWilsonTwoIndexAntiSymmetricImplR>;

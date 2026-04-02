@@ -109,6 +109,7 @@ protected:
 };
 
 MODULE_REGISTER_TMP(Meson, ARG(TMeson<FIMPL, FIMPL>), MContraction);
+MODULE_REGISTER_TMP(MesonAsym, ARG(TMeson<SpWilsonTwoIndexAntiSymmetricImplR, SpWilsonTwoIndexAntiSymmetricImplR>), MContraction);
 
 /******************************************************************************
  *                           TMeson implementation                            *
@@ -228,6 +229,7 @@ void TMeson<FImpl1, FImpl2>::execute(void)
     std::vector<TComplex>  buf;
     std::vector<Result>    result;
     Gamma                  g5(Gamma::Algebra::Gamma5);
+    std::vector<GammaPair> gammaList;
     int                    nt = env().getDim(Tp);
 
     std::map<Gamma::Algebra, std::vector<Gamma::Algebra>> gammaMap;
@@ -269,60 +271,36 @@ void TMeson<FImpl1, FImpl2>::execute(void)
     {
         auto &q1 = envGet(PropagatorField1, par().q1);
         auto &q2 = envGet(PropagatorField2, par().q2);
-        
         envGetTmp(LatticeComplex, c);
-        envGetTmp(LatticePropagator, q1Gq2);
-        if (par().sink.empty())
-        {
-            HADRONS_ERROR(Definition, "no sink provided");
-        }
         LOG(Message) << "(using sink '" << par().sink << "')" << std::endl;
-        unsigned int i = 0;
-        for(auto &ss: gammaMap)
+        for (unsigned int i = 0; i < result.size(); ++i)
         {
-            Gamma::Algebra gammaSink = ss.first;
-            Gamma gSnk(gammaSink);
-            startTimer("mesonConnectedSnk");
-            q1Gq2 = mesonConnected1(q1,q2,gSnk);
-            stopTimer("mesonConnectedSnk");
-            for (Gamma::Algebra &gammaSource: ss.second)
+            Gamma       gSnk(gammaList[i].first);
+            Gamma       gSrc(gammaList[i].second);
+            std::string ns;
+
+            ns = vm().getModuleNamespace(env().getObjectModule(par().sink));
+            if (ns == "MSource")
             {
-                Gamma gSrc(gammaSource);
-                std::string ns;
-                    
-                ns = vm().getModuleNamespace(env().getObjectModule(par().sink));
-                if (ns == "MSource")
-                {
-                    PropagatorField1 &sink = envGet(PropagatorField1, par().sink);
-                    
-                    startTimer("mesonConnected");
-                    c = trace(mesonConnected2(q1Gq2, gSrc)*sink);
-                    stopTimer("mesonConnected");
-                    startTimer("sliceSum");
-                    sliceSum(c, buf, Tp);
-                    stopTimer("sliceSum");
-                }
-                else if (ns == "MSink")
-                {
-                    SinkFnScalar &sink = envGet(SinkFnScalar, par().sink);
-                    
-                    startTimer("mesonConnected");
-                    c   = trace(mesonConnected2(q1Gq2, gSrc));
-                    stopTimer("mesonConnected");
-                    startTimer("sliceSum");
-                    buf = sink(c);
-                    stopTimer("sliceSum");
-                }
-                for (unsigned int t = 0; t < buf.size(); ++t)
-                {
-                    result[i].corr[t] = TensorRemove(buf[t]);
-                }
-                result[i].gamma_snk = gSnk.g;
-                result[i].gamma_src = gSrc.g;
-                i++;
+                PropagatorField1 &sink = envGet(PropagatorField1, par().sink);
+                
+                c = trace(mesonConnected(q1, q2, gSnk, gSrc)*sink);
+                sliceSum(c, buf, Tp);
+            }
+            else if (ns == "MSink")
+            {
+                SinkFnScalar &sink = envGet(SinkFnScalar, par().sink);
+
+                c   = trace(mesonConnected(q1, q2, gSnk, gSrc));
+                buf = sink(c);
+            }
+            for (unsigned int t = 0; t < buf.size(); ++t)
+            {
+                result[i].corr[t] = TensorRemove(buf[t]);
             }
         }
     }
+	    
     startTimer("I/O");
     saveResult(par().output, "meson", result);
     stopTimer("I/O");

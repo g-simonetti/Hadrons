@@ -33,6 +33,7 @@ using namespace MSink;
 typedef Lattice<iScalar<iMatrix<iScalar<vComplex>,Ns>>> SpinMatField;
 
 template class HADRONS_NAMESPACE::MSink::TPoint<FIMPL::PropagatorField>;
+template class HADRONS_NAMESPACE::MSink::TPoint<SpWilsonTwoIndexAntiSymmetricImplR::PropagatorField>;
 template class HADRONS_NAMESPACE::MSink::TPoint<ScalarImplCR::Field>;
 template class HADRONS_NAMESPACE::MSink::TPoint<SpinMatField>;
 

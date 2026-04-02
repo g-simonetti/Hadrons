@@ -31,3 +31,4 @@ using namespace MFermion;
 
 template class HADRONS_NAMESPACE::MFermion::TGaugeProp<FIMPL>;
 template class HADRONS_NAMESPACE::MFermion::TGaugeProp<ZFIMPL>;
+template class HADRONS_NAMESPACE::MFermion::TGaugeProp<SpWilsonTwoIndexAntiSymmetricImplR>;

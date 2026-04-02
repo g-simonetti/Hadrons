@@ -35,3 +35,4 @@ using namespace MContraction;
 
 template class HADRONS_NAMESPACE::MContraction::TWardIdentity<FIMPL>;
 template class HADRONS_NAMESPACE::MContraction::TWardIdentity<ZFIMPL>;
+template class HADRONS_NAMESPACE::MContraction::TWardIdentity<SpWilsonTwoIndexAntiSymmetricImplR>;

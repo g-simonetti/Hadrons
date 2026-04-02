@@ -85,6 +85,7 @@ private:
 
 MODULE_REGISTER_TMP(Z2,       TZ2<FIMPL>,        MSource);
 MODULE_REGISTER_TMP(ScalarZ2, TZ2<ScalarImplCR>, MSource);
+MODULE_REGISTER_TMP(AsymZ2, TZ2<SpWilsonTwoIndexAntiSymmetricImplR>, MSource);
 
 /******************************************************************************
  *                       TZ2 template implementation                          *

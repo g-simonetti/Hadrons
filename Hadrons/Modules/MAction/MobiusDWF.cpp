@@ -30,6 +30,8 @@ using namespace Hadrons;
 using namespace MAction;
 
 template class HADRONS_NAMESPACE::MAction::TMobiusDWF<FIMPL>;
+template class HADRONS_NAMESPACE::MAction::TMobiusDWF<SpWilsonTwoIndexAntiSymmetricImplR>;
 #ifdef GRID_DEFAULT_PRECISION_DOUBLE
 template class HADRONS_NAMESPACE::MAction::TMobiusDWF<FIMPLF>;
+template class HADRONS_NAMESPACE::MAction::TMobiusDWF<SpWilsonTwoIndexAntiSymmetricImplF>;
 #endif

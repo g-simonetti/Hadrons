@@ -31,6 +31,7 @@ using namespace MSolver;
 
 template class HADRONS_NAMESPACE::MSolver::TRBPrecCG<FIMPL>;
 template class HADRONS_NAMESPACE::MSolver::TRBPrecCG<FIMPL, false>;
+template class HADRONS_NAMESPACE::MSolver::TRBPrecCG<SpWilsonTwoIndexAntiSymmetricImplR>;
 template class HADRONS_NAMESPACE::MSolver::TRBPrecCG<LIMPL>;
 template class HADRONS_NAMESPACE::MSolver::TRBPrecCG<ZFIMPL>;
 template class HADRONS_NAMESPACE::MSolver::TRBPrecCG<ZFIMPL, false>;
