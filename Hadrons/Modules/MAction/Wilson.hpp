@@ -75,7 +75,7 @@ MODULE_REGISTER_TMP(Wilson, TWilson<FIMPL>, MAction);
 MODULE_REGISTER_TMP(WilsonAsym, TWilson<SpWilsonTwoIndexAntiSymmetricImplR>, MAction);
 #ifdef GRID_DEFAULT_PRECISION_DOUBLE
 MODULE_REGISTER_TMP(WilsonF, TWilson<FIMPLF>, MAction);
-MODULE_REGISTER_TMP(WilsonAsym, TWilson<SpWilsonTwoIndexAntiSymmetricImplF>, MAction);
+MODULE_REGISTER_TMP(WilsonAsymF, TWilson<SpWilsonTwoIndexAntiSymmetricImplF>, MAction);
 #endif
 
 /******************************************************************************
