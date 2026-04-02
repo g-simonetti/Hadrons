@@ -30,8 +30,8 @@ using namespace Hadrons;
 using namespace MAction;
 
 template class HADRONS_NAMESPACE::MAction::TWilsonClover<FIMPL>;
-template class HADRONS_NAMESPACE::MAction::TWilsonClover<SpWilsonTwoIndexAntiSymmetricImplR>
+template class HADRONS_NAMESPACE::MAction::TWilsonClover<SpWilsonTwoIndexAntiSymmetricImplR>;
 #ifdef GRID_DEFAULT_PRECISION_DOUBLE
 template class HADRONS_NAMESPACE::MAction::TWilsonClover<FIMPLF>;
-template class HADRONS_NAMESPACE::MAction::TWilsonClover<SpWilsonTwoIndexAntiSymmetricImplF>
+template class HADRONS_NAMESPACE::MAction::TWilsonClover<SpWilsonTwoIndexAntiSymmetricImplF>;
 #endif
