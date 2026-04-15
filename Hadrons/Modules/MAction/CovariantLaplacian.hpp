@@ -134,6 +134,9 @@ public:
 MODULE_REGISTER_TMP(FermionCovariantLaplacian, 
                     ARG(TCovariantLaplacian<FIMPL::FermionField, GIMPL>), MAction);
 
+MODULE_REGISTER_TMP(ColourVectorCovariantLaplacian,
+                    ARG(TCovariantLaplacian<Lattice<iColourVector<typename FIMPL::Simd>>, GIMPL>), MAction);
+
 /******************************************************************************
  *                      TCovariantLaplacian implementation                    *
  ******************************************************************************/

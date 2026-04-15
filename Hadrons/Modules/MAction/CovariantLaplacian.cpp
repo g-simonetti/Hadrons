@@ -29,4 +29,5 @@ using namespace Grid;
 using namespace Hadrons;
 using namespace MAction;
 
+template class HADRONS_NAMESPACE::MAction::TCovariantLaplacian<Lattice<iColourVector<typename FIMPL::Simd>>, GIMPL>;
 template class HADRONS_NAMESPACE::MAction::TCovariantLaplacian<FIMPL::FermionField, GIMPL>;
